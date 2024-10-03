@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
-
+import java.awt.Color;
 import edu.princeton.cs.introcs.StdDraw;
 
 /**
@@ -20,5 +20,21 @@ public class InterpretDrawingFile {
 		File f = new File(chooser.getSelectedFile().getPath());
 		Scanner in = new Scanner(f); //making Scanner with a File
 		
+		String shapeType = in.next();
+		System.out.println(shapeType);
+		int red = in.nextInt();
+		int green = in.nextInt();
+		int blue = in.nextInt();
+		boolean isFilled = in.nextBoolean();
+		double x = in.nextDouble();
+		double y = in.nextDouble();
+		double hw = in.nextDouble();
+		double hh = in.nextDouble();
+		StdDraw.setPenColor(new Color(red, green, blue));
+		if(isFilled) {
+			StdDraw.filledRectangle(x,y,hw,hh);
+		}else {
+			StdDraw.rectangle(x, y, hw, hh);;
+		}
 	}
 }
